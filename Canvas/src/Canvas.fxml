@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="backPane" prefHeight="505.0" prefWidth="823.0" style="-fx-background-color: #91c4cf;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="609.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Canvas fx:id="canvas" height="473.0" width="610.0">
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+            </Canvas>
+            <TextField fx:id="textInput" layoutX="63.0" layoutY="132.0" promptText="Text here" visible="false" />
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <MenuBar prefHeight="26.0" prefWidth="694.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="saveItem" mnemonicParsing="false" text="Save" />
+                  <MenuItem fx:id="saveAsItem" mnemonicParsing="false" text="Save as" />
+            </items>
+          </Menu>
+          <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="newItem" mnemonicParsing="false" onAction="#newCanvas" text="New Canvas" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefHeight="478.0" prefWidth="114.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane>
+               <children>
+                  <Slider fx:id="slider" layoutX="3.0" layoutY="1.0" majorTickUnit="10.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="135.0" prefWidth="85.0" showTickLabels="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Slider>
+                  <Label fx:id="labelLW" layoutX="13.399999618530273" layoutY="35.399993896484375" prefHeight="15.0" prefWidth="60.0" text="LW:  1.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="84.0" prefWidth="114.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Button fx:id="brushButton" mnemonicParsing="false" onAction="#brushSelected" text="brush">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="lineButton" mnemonicParsing="false" onAction="#lineSelected" text="line">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="25.600006103515625">
+                     <children>
+                        <Button fx:id="cirButton" mnemonicParsing="false" onAction="#circleSelected" text="circle">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="ovalButton" mnemonicParsing="false" onAction="#ovalSelected" text="oval">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="51.20001220703125">
+                     <children>
+                        <Button fx:id="rectButton" mnemonicParsing="false" onAction="#rectangleSelected" text="rectangle">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="textButton" mnemonicParsing="false" onAction="#textSelected" text="text" />
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="154.0" prefWidth="80.0">
+               <children>
+                  <ColorPicker fx:id="colorPicker" prefWidth="80.0">
+                     <value>
+                        <Color />
+                     </value>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ColorPicker>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER" prefHeight="466.0" prefWidth="174.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Users logged in:" textAlignment="CENTER" />
+            <ListView fx:id="userList" editable="true" prefHeight="226.0" prefWidth="166.0" style="-fx-background-color: 0;">
+               <VBox.margin>
+                  <Insets bottom="100.0" />
+               </VBox.margin>
+            </ListView>
+            <Label text="Chat Box" textAlignment="CENTER" />
+            <TextArea fx:id="chatLog" editable="false" prefHeight="186.0" prefWidth="206.0" text="Logged into server" wrapText="true" />
+            <HBox alignment="BOTTOM_LEFT" prefHeight="16.0" prefWidth="174.0">
+               <children>
+                  <TextArea fx:id="chatField" prefHeight="100.0" prefWidth="132.0" promptText="Type Here">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+                  <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMessage" prefHeight="51.0" prefWidth="74.0" text="Send" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
